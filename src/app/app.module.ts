@@ -3,10 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DimensionComponent } from './dimension/dimension.component';
+import { ConverterComponent } from './converter/converter.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DimensionComponent,
+    ConverterComponent
   ],
   imports: [
     BrowserModule,
