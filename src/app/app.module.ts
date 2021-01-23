@@ -1,14 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+
 import { AppComponent } from './app.component';
-import { DimensionComponent } from './dimension/dimension.component';
-import { ConverterComponent } from './converter/converter.component';
-import { HomeComponent } from './home/home.component';
+import { DimensionComponent } from './components/dimension/dimension.component';
+import { ConverterComponent } from './components/converter/converter.component';
+import { HomeComponent } from './components/home/home.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ValidateInputDirective } from './directives/validate-input.directive';
 
 @NgModule({
   declarations: [
@@ -18,11 +28,20 @@ import { FooterComponent } from './components/footer/footer.component';
     HomeComponent,
     FeedbackComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ValidateInputDirective
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,27 @@
-<p>dimension works!</p>
+<div fxLayout="column"
+    fxLayoutGap="16px"
+    class="tool p-8">
+    <h1>Dimension calculator</h1>
+    <div fxLayout="column">
+        <mat-form-field appearance="fill">
+            <mat-label>Enter total area</mat-label>
+            <input matInput
+                autocomplete="off"
+                (keyup.enter)="calculateDimensions()"
+                [formControl]="areaField"
+                validateInput
+                [regexFormat]="">
+        </mat-form-field>
+        
+        <button mat-raised-button
+            color="primary"
+            class="mb-4"
+            (click)="calculateDimensions()">
+            GET DIMENSIONS
+        </button>
+    </div>
+
+    <div>
+        <p *ngFor="let dimension of computedDimensions">{{dimension}}</p>
+    </div>
+</div>

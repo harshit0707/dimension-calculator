@@ -1,1 +1,81 @@
-<p>converter works!</p>
+
+<div class="p-8 tool">
+  <h1>Metric calculator</h1>
+
+  <div fxLayout="row"
+    fxLayout.lt-sm="column"
+    fxLayoutGap="16px"
+    fxLayoutAlign="start center">
+
+    <!-- First input form field -->
+    <div [formGroup]="firstValueField"
+      fxLayout="column">
+      <mat-form-field appearance="fill">
+        <input matInput
+          placeholder="0"
+          autocomplete="off"
+          formControlName="value">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill"
+        class="reductFormSize">
+        <mat-select formControlName="unit" placeholder="Feet">
+          <mat-option *ngFor="let metric of metricUnits"
+            value={{metric}}>
+            {{metric}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Operation Buttons -->
+    <button mat-raised-button color="primary">+</button>
+
+    <!-- Second input form field -->
+    <div [formGroup]="secondValueField"
+      fxLayout="column">
+      <mat-form-field appearance="fill">
+        <input matInput
+          placeholder="0"
+          autocomplete="off"
+          formControlName="value">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill"
+        class="reductFormSize">
+        <mat-select formControlName="unit" placeholder="Inches">
+          <mat-option *ngFor="let metric of metricUnits"
+            value={{metric}}>
+            {{metric}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Result button -->
+    <button mat-raised-button color="primary">=</button>
+
+    <!-- Output form field -->
+    <div [formGroup]="outputValueField"
+      fxLayout="column">
+      <mat-form-field appearance="fill">
+        <input matInput
+          readonly
+          placeholder="0"
+          autocomplete="off"
+          formControlName="value">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill"
+        class="reductFormSize">
+        <mat-select formControlName="unit" placeholder="Inches">
+          <mat-option *ngFor="let metric of metricUnits"
+            value={{metric}}>
+            {{metric}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+  </div>
+</div>

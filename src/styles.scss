@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+@import './themes/dark-theme.scss';
+@import './themes/responsive-theme.scss';
+html, body { height: 100%; }
+body { margin: 0 }
+
+h1, h2 { font-family: 'Quicksand', sans-serif; }
+
+p { 
+    font-family: 'Open Sans', sans-serif; 
+    margin: 0px!important;;
+}
+
+.tool {
+    box-shadow: 5px 5px 10px lightgrey;
+}

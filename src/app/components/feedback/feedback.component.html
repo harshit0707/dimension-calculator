@@ -1,1 +1,22 @@
-<p>feedback works!</p>
+<div fxLayout="column"
+    fxLayoutGap="16px"
+    class="tool p-8">
+    <h2>How would you like us to improve this site?</h2>
+    <div fxLayout="column">
+        <mat-form-field appearance="fill">
+            <mat-label>Write your feedback here</mat-label>
+            <textarea matInput
+                maxlength="250"
+                autocomplete="off"
+                [formControl]="feedbackField">
+            </textarea>
+        </mat-form-field>
+        
+        <button mat-raised-button
+            color="primary"
+            class="mb-4 feedbackSubmitButton"
+            (click)="submitFeedback()">
+            SUBMIT
+        </button>
+    </div>
+</div>
