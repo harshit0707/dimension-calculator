@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 
 @Component({
   selector: 'app-footer',
@@ -8,7 +7,7 @@ import { GoogleAnalyticsService } from 'src/app/services/google-analytics.servic
 })
 export class FooterComponent implements OnInit, OnDestroy {
 
-  constructor(private _gaservice: GoogleAnalyticsService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

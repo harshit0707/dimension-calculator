@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 
 @Component({
   selector: 'app-feedback',
@@ -9,7 +10,7 @@ import { Subject } from 'rxjs';
 })
 export class FeedbackComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  constructor(private _gaservice: GoogleAnalyticsService) { }
 
   $destroy: Subject<any>;
   feedbackField: FormControl;
@@ -25,6 +26,7 @@ export class FeedbackComponent implements OnInit, OnDestroy {
   }
 
   submitFeedback() {
-    
+    const feedback = this.feedbackField.value;
+    this._gaservice.sendEvent('feedback_submit', 'feedback', feedback);
   }
 }
