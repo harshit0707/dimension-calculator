@@ -188,8 +188,14 @@ export class ConverterComponent implements OnInit {
       const value = parseFloat(this.secondValueField.get('value').value);
       computedValue += this.convert(value, this.secondValueUnit, this.outputValueUnit);
     }
-    this.approximateValueWarningFlag = (computedValue % 1 !== 0);
-    this.outputValueField.get('value').setValue(computedValue.toFixed(5));
+    if ((computedValue % 1 === 0)) {
+      this.approximateValueWarningFlag = false;
+      computedValue = computedValue;
+    } else {
+      this.approximateValueWarningFlag = true;
+      computedValue = parseFloat(computedValue.toFixed(5));
+    }
+    this.outputValueField.get('value').setValue(computedValue);
   }
 
   convert(value: number, inputUnit: string, outputUnit: string): number {
