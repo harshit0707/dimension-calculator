@@ -13,3 +13,9 @@ p {
 .tool {
     box-shadow: 5px 5px 10px lightgrey;
 }
+
+@media only screen and (max-width: 599px) {
+    .tool {
+        box-shadow: 5px 5px 10px lightgrey, -1px -1px 10px lightgrey;
+    }
+}
