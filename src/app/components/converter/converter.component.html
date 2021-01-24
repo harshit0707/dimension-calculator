@@ -5,59 +5,65 @@
   <div fxLayout="row"
     fxLayout.lt-sm="column"
     fxLayoutGap="16px"
-    fxLayoutAlign="start center">
+    fxLayoutAlign="start start">
 
-    <!-- First input form field -->
-    <div [formGroup]="firstValueField"
-      fxLayout="column">
-      <mat-form-field appearance="fill">
-        <input matInput
-          placeholder="0"
-          autocomplete="off"
-          formControlName="value">
-      </mat-form-field>
+    <div fxLayout="row"
+      fxLayout.lt-sm="column"
+      fxLayoutGap="16px"
+      fxLayoutAlign="start center">
+      <!-- First input form field -->
+      <div [formGroup]="firstValueField"
+        fxLayout="column">
+        <mat-form-field appearance="fill">
+          <input matInput
+            placeholder="0"
+            autocomplete="off"
+            formControlName="value">
+        </mat-form-field>
 
-      <mat-form-field appearance="fill"
-        class="reductFormSize">
-        <mat-select formControlName="unit" placeholder="Feet">
-          <mat-option *ngFor="let metric of metricUnits"
-            value={{metric}}>
-            {{metric}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field appearance="fill"
+          class="reductFormSize">
+          <mat-select formControlName="unit" placeholder="Feet">
+            <mat-option *ngFor="let metric of metricUnits"
+              value={{metric}}>
+              {{metric}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Operation Buttons -->
+      <button mat-raised-button color="primary">+</button>
+
+      <!-- Second input form field -->
+      <div [formGroup]="secondValueField"
+        fxLayout="column">
+        <mat-form-field appearance="fill">
+          <input matInput
+            placeholder="0"
+            autocomplete="off"
+            formControlName="value">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill"
+          class="reductFormSize">
+          <mat-select formControlName="unit" placeholder="Inches">
+            <mat-option *ngFor="let metric of metricUnits"
+              value={{metric}}>
+              {{metric}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Result button -->
+      <button mat-raised-button color="primary">=</button>
     </div>
-
-    <!-- Operation Buttons -->
-    <button mat-raised-button color="primary">+</button>
-
-    <!-- Second input form field -->
-    <div [formGroup]="secondValueField"
-      fxLayout="column">
-      <mat-form-field appearance="fill">
-        <input matInput
-          placeholder="0"
-          autocomplete="off"
-          formControlName="value">
-      </mat-form-field>
-
-      <mat-form-field appearance="fill"
-        class="reductFormSize">
-        <mat-select formControlName="unit" placeholder="Inches">
-          <mat-option *ngFor="let metric of metricUnits"
-            value={{metric}}>
-            {{metric}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-
-    <!-- Result button -->
-    <button mat-raised-button color="primary">=</button>
 
     <!-- Output form field -->
     <div [formGroup]="outputValueField"
-      fxLayout="column">
+      fxLayout="column"
+      fxFlexAlign="start start">
       <mat-form-field appearance="fill">
         <input matInput
           readonly
@@ -75,6 +81,10 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+
+      <mat-hint *ngIf="approximateValueWarningFlag" class="mt-2">
+        * The displayed result is an approximate value
+      </mat-hint>
     </div>
 
   </div>
