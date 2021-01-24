@@ -1,3 +1,9 @@
 .feedbackSubmitButton {
     width: max-content;
 }
+
+@media only screen and (max-width: 599px) {
+    .feedbackSubmitButton {
+        width: 100%;
+    }
+}
