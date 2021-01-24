@@ -113,7 +113,7 @@ export class ConverterComponent implements OnInit {
       const value = parseInt(this.secondValueField.get('value').value);
       computedValue += this.convert(value, this.secondValueUnit, this.outputValueUnit);
     }
-    this.outputValueField.get('value').setValue(computedValue);
+    this.outputValueField.get('value').setValue(Math.round(computedValue));
   }
 
   convert(value: number, inputUnit: string, outputUnit: string) {
