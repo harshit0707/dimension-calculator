@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { trigger, transition, style, animate, state } from '@angular/animations';
+import { ScreenResolutionService } from 'src/app/services/screen-resolution.service';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -19,16 +22,40 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
     ])
   ]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  inFocus: boolean;
+  dimensionToolInFocus: boolean;
+  converterToolInFocus: boolean;
+  feedbackInFocus: boolean;
 
-  constructor() { }
+  $destroy: Subject<any>;
+
+  constructor(private _deviceSizeService: ScreenResolutionService) { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.inFocus = true;
-    }, 100)
+    this.$destroy = new Subject<any>();
   }
 
+  ngAfterViewInit() {
+    if (this._deviceSizeService.deviceSize === 0
+      || this._deviceSizeService.deviceSize === 1) {
+        setTimeout(() => {
+          this._deviceSizeService.$scrollTopSubject.pipe(takeUntil(this.$destroy))
+          .subscribe((topPosition)=> {
+            if (topPosition >= 0) this.dimensionToolInFocus = this.converterToolInFocus = true;
+            if (topPosition > 500) this.feedbackInFocus = true;
+          });
+        });
+    } else {
+      setTimeout(() => {
+        this.dimensionToolInFocus = true;
+        this.converterToolInFocus = true;
+        this.feedbackInFocus = true;
+      }, 100)
+    }
+  }
+
+  ngOnDestroy() {
+    this.$destroy.complete();
+  }
 }

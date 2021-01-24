@@ -5,8 +5,8 @@
     <div fxLayout="row"
         fxLayout.lt-sm="column"
         fxLayoutGap="32px">
-        <app-dimension [@elementAnimation]="inFocus ? 'final' : 'initial'"></app-dimension>
-        <app-converter [@elementAnimation]="inFocus ? 'final' : 'initial'"></app-converter>
+        <app-dimension [@elementAnimation]="dimensionToolInFocus ? 'final' : 'initial'"></app-dimension>
+        <app-converter [@elementAnimation]="converterToolInFocus ? 'final' : 'initial'"></app-converter>
     </div>
-    <app-feedback [@elementAnimation]="inFocus ? 'final' : 'initial'"></app-feedback>
+    <app-feedback [@elementAnimation]="feedbackInFocus ? 'final' : 'initial'"></app-feedback>
 </div>
