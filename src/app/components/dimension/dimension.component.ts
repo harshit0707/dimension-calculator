@@ -14,7 +14,7 @@ export class DimensionComponent implements OnInit, OnDestroy {
 
   $destroy: Subject<any>;
   areaField: FormControl;
-  computedDimensions: Array<string>;
+  computedDimensions: Array<Array<string>>;
 
   ngOnInit(): void {
     this.$destroy = new Subject<any>();
@@ -37,9 +37,9 @@ export class DimensionComponent implements OnInit, OnDestroy {
     for(let i=1; i<= squareRootValue; i++) {
       if (value % i == 0) {
           if (value / i == i) {
-              this.computedDimensions.push(i + ' X ' + i);
+            this.computedDimensions.push([i.toString(), i.toString()]);
           } else {
-            this.computedDimensions.push(i + ' X ' + (value / i));
+            this.computedDimensions.push([i.toString(), (value / i).toString()]);
           }
       }
     }
